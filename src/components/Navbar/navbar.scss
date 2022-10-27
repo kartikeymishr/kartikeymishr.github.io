@@ -18,12 +18,12 @@
   align-items: center;
 
   img {
-    width: 90px;
-    height: 20px;
+    width: 200px;
+    height: 30px;
 
     @media screen and (min-width: 2000px) {
-      width: 180px;
-      height: 40px;
+      width: 400px;
+      height: 60px;
     }
   }
 }
@@ -35,6 +35,8 @@
   align-items: center;
   list-style: none;
 
+  margin-right: 12rem;
+
   li {
     margin: 0 1rem;
     cursor: pointer;
@@ -44,8 +46,10 @@
       width: 5px;
       height: 5px;
       background: transparent;
-      border-radius: 50%;
+      border-radius: 25%;
       margin-bottom: 5px;
+
+      transition: all 0.3s ease-in-out;
     }
 
     a {
@@ -64,7 +68,8 @@
 
     &:hover {
       div {
-        background: var(--secondary-color)
+        background: var(--secondary-color);
+        transform: scaleX(10);
       }
     }
   }

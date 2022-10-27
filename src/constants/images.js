@@ -35,6 +35,14 @@ import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
 
+import newLogoWhite from '../assets/kmlogowhite.png'
+import newLogoPurple from '../assets/kmlogopurple-cropped.png'
+import newLogoBlack from '../assets/kmlogoblack.png'
+import java from '../assets/java.png'
+import spring from '../assets/spring.png'
+import kmgradient from '../assets/kmgradient.png'
+import gradientbg from '../assets/gradient-bg.png'
+
 export default {
     email,
     mobile,
@@ -69,4 +77,11 @@ export default {
     nb,
     skype,
     spotify,
+    newLogoWhite,
+    newLogoBlack,
+    newLogoPurple,
+    java,
+    spring,
+    kmgradient,
+    gradientbg
 };
