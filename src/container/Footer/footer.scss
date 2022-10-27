@@ -2,6 +2,10 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
+
+  h2 {
+    font-family: var(--font-ubuntu);
+  }
 }
 
 .app__footer-cards {
@@ -40,10 +44,11 @@
     a {
       text-decoration: none;
       font-weight: 600;
+      font-family: var(--font-poppins);
     }
 
     &:hover {
-      box-shadow: 0 0 25px #fef4f5;
+      box-shadow: 0 0 25px var(--lightPink-color);
     }
 
     @media screen and (max-width: 450px) {
@@ -70,7 +75,7 @@
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--primary-color);
+    background-color: var(--new-blue-color);
     transition: all 0.3s ease-in-out;
 
     input, textarea {
@@ -78,10 +83,10 @@
       padding: 0.95rem;
       border: none;
       border-radius: 7px;
-      background-color: var(--primary-color);
+      background-color: var(--white-color);
 
-      font-family: var(--font-base);
-      color: var(--secondary-color);
+      font-family: var(--font-code);
+      color: var(--black-color);
       outline: none;
     }
 

@@ -38,6 +38,18 @@ const Header = () => {
                         <p className="p-text">Experienced in Java, Spring Boot, React and Redux</p>
                     </div>
                 </div>
+
+                <motion.div
+                    variant={scaleVariants}
+                    whileInView={scaleVariants.whileInView}
+                    className="app__header-circles circles-left"
+                >
+                    {[images.redux, images.javascript].map((circle, index) => (
+                        <div className="circle-cmp app__flex" key={`circle-${index}`}>
+                            <img src={circle} alt="circle"/>
+                        </div>
+                    ))}
+                </motion.div>
             </motion.div>
 
             <motion.div
@@ -45,23 +57,14 @@ const Header = () => {
                 transition={{duration: 0.5, delayChildren: 0.5}}
                 className="app__header-typewriter"
             >
-                {/*<img src={images.profile} alt="profile-bg"/>*/}
-                {/*<motion.img*/}
-                {/*    whileInView={{scale: [0, 1]}}*/}
-                {/*    transition={{duration: 1, ease: 'easeInOut'}}*/}
-                {/*    src={images.gradientbg}*/}
-                {/*    alt="profile-circle"*/}
-                {/*    className="overlay_circle"*/}
-                {/*/>*/}
-
                 <h1>
-                    I love{' '}
+                    I am {'  '}
                     <span>
                         <Typewriter
-                            words={['coding.', 'design.', 'photography.', 'pizzas!']}
-                            loop={15}
+                            words={['a developer.', 'a photographer.', 'an adventurer.', 'an aspiring designer.']}
+                            loop={false}
                             cursor
-                            cursorStyle='|'
+                            cursorStyle='👩‍💻'
                             typeSpeed={85}
                             deleteSpeed={50}
                             delaySpeed={1000}
@@ -73,7 +76,7 @@ const Header = () => {
             <motion.div
                 variant={scaleVariants}
                 whileInView={scaleVariants.whileInView}
-                className="app__header-circles"
+                className="app__header-circles circles-right"
             >
                 {[images.react, images.java, images.spring].map((circle, index) => (
                     <div className="circle-cmp app__flex" key={`circle-${index}`}>

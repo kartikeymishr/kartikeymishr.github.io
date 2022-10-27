@@ -1,15 +1,15 @@
 import React from "react"
-
+import {navigation} from "../constants/navigation";
 
 const NavigationDots = ({active}) => {
     return (
         <div className="app__navigation">
-            {['home', 'about', 'work', 'skills', 'testimonials', 'contact'].map((item, index) => (
+            {navigation.map((item, index) => (
                 <a
                     href={`#${item}`}
                     key={item + index}
                     className="app__navigation-dot"
-                    style={active === item ? {backgroundColor: '#313BAC'} : {}}
+                    style={active === item ? {backgroundColor: 'var(--new-blue-color)'} : {}}
                 />
             ))}
         </div>
