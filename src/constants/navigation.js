@@ -1,7 +1,7 @@
 export const navigation = [
     'home',
+    'about',
     'skills',
-    // 'about',
     // 'work',
     'contact'
 ];

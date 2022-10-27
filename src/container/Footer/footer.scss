@@ -4,7 +4,7 @@
   flex-direction: column;
 
   h2 {
-    font-family: var(--font-ubuntu);
+    font-family: var(--font-roboto-slab);
   }
 }
 
@@ -75,7 +75,7 @@
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--new-blue-color);
+    background-color: var(--secondary-color);
     transition: all 0.3s ease-in-out;
 
     input, textarea {
@@ -102,15 +102,26 @@
   button {
     padding: 1rem 2rem;
     border-radius: 10px;
-    border: none;
-    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    background-color: var(--white-color);
     font-weight: 500;
-    color: var(--white-color);
+    color: var(--secondary-color);
     outline: none;
     margin: 2rem 0 0 0;
 
-    font-family: var(--font-base);
+    transition: all 0.2s ease;
+
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    text-transform: uppercase;
     cursor: pointer;
+
+    &:hover {
+      border: 2px solid var(--secondary-color);
+      border-radius: 30px;
+      background-color: var(--secondary-color);
+      color: var(--white-color);
+    }
   }
 
   @media screen and (max-width: 768px) {

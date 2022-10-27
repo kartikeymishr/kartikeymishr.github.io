@@ -2,6 +2,10 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
+
+  h2 {
+    font-family: var(--font-roboto-slab);
+  }
 }
 
 .app__skills-container {
@@ -40,6 +44,7 @@
   flex-direction: column;
   text-align: center;
   margin: 1rem;
+  transition: all 0.3s ease;
 
   div {
     width: 90px;
@@ -71,6 +76,10 @@
   p {
     font-weight: 500;
     margin-top: 0.5rem;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 
   @media screen and (min-width: 2000px) {
@@ -124,8 +133,8 @@
     cursor: pointer;
 
     h4 {
-      font-weight: 500;
-      font-family: var(--font-code);
+      font-weight: 800;
+      font-family: var(--font-poppins);
     }
 
     p {

@@ -63,6 +63,8 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 
+    background-color: var(--white-color);
+
     h1 {
       font-family: var(--font-code);
       font-size: 2rem;
@@ -275,7 +277,8 @@
     margin: auto;
     font-weight: normal;
     color: var(--black-color);
-    font-family: var(--font-code);
+    font-family: var(--font-roboto-slab);
+    font-weight: 800;
   }
 
   span {

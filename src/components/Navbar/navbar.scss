@@ -35,7 +35,6 @@
   align-items: center;
   list-style: none;
 
-  margin-right: 12rem;
 
   li {
     margin: 0 1rem;
@@ -79,6 +78,34 @@
   @media screen and (max-width: 900px) {
     display: none;
   }
+}
+
+.app__navbar-resume-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  border: 2px solid var(--gray-color);
+
+  font-family: var(--font-code);
+  text-transform: uppercase;
+
+  a {
+    text-decoration: none;
+    color: var(--gray-color);
+  }
+
+  &:hover {
+    border-radius: 30px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+
+    a {
+      color: var(--white-color)
+    }
+  }
+
 }
 
 .app__navbar-menu {

@@ -2,27 +2,70 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
+
+  h2 {
+    font-family: var(--font-roboto-slab);
+    margin: 3rem 0;
+  }
+
+  span {
+    font-family: var(--font-code);
+  }
 }
 
 .app__profiles {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap: wrap;
   margin-top: 2rem;
+
+  font-family: var(--font-roboto-slab);
+}
+
+.app__profiles-desc {
+  margin: 1rem;
+  //width: 100%;
+
+  h2 {
+    text-align: left;
+  }
+
+  p {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+
+    span {
+      font-family: var(--font-code);
+      color: var(--secondary-color)
+    }
+  }
+}
+
+.app__profiles-items {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+
+  h4 {
+    font-size: 2rem;
+    font-family: var(--font-poppins);
+  }
 }
 
 .app__profiles-item {
-  width: 190px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: row;
   margin: 2rem;
 
   img {
-    width: 100%;
-    height: 170px;
+    width: 190px;
+    height: 190px;
     border-radius: 15px;
     object-fit: cover;
   }
@@ -34,5 +77,30 @@
     img {
       height: 320px;
     }
+  }
+}
+
+.app__profiles-cert {
+  margin-top: 2rem;
+  h4 {
+    font-size: 1.8rem;
+    font-family: var(--font-poppins);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-code);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--secondary-color)
+  }
+
+  p {
+    font-family: var(--font-ubuntu);
   }
 }

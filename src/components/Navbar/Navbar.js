@@ -5,6 +5,7 @@ import {images} from "../../constants";
 import {HiMenuAlt4, HiX} from "react-icons/hi";
 import {motion} from "framer-motion";
 import {navigation} from "../../constants/navigation";
+import pdf from "../../assets/Kartikey-Mishr-CV.pdf";
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
@@ -23,6 +24,10 @@ const Navbar = () => {
                     </li>
                 ))}
             </ul>
+
+            <div className="app__navbar-resume-btn">
+                <a href={pdf} download="Kartikey Mishr CV.pdf">Download CV</a>
+            </div>
 
             <div className="app__navbar-menu">
                 <HiMenuAlt4 onClick={() => setToggle(true)}/>

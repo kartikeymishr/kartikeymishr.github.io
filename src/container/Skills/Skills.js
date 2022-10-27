@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react"
 import {motion} from "framer-motion";
-import ReactTooltip from "react-tooltip";
-import {CgCodeSlash} from "react-icons/cg"
 
 import {AppWrap, MotionWrap} from "../../wrapper";
-import {urlFor, client} from "../../client";
+import {client, urlFor} from "../../client";
 import './skills.scss'
 
 const Skills = () => {
