@@ -52,7 +52,7 @@ const Skills = () => {
                             className="app__skills-exp-item"
                             key={exp.year}
                         >
-                            <div className="app__skills-exp-single">
+                            <div className="app__skills-exp-card">
                                 <div className="app__skills-exp-year">
                                     <p className="bold-text">{exp.year}</p>
                                 </div>
@@ -64,7 +64,7 @@ const Skills = () => {
                                             <motion.div
                                                 whileInView={{opacity: [0, 1]}}
                                                 transition={{duration: 0.5}}
-                                                className="app__skills-exp-work"
+                                                className="app__skills-exp-title"
                                                 data-tip
                                                 data-for={work.name}
                                                 key={work.name}
@@ -72,9 +72,9 @@ const Skills = () => {
                                                 <h4 className="bold-text">{work.name}</h4>
                                                 <p className="p-text">{work.company}</p>
                                             </motion.div>
-                                            <ul className="app__skills-exp-work-desc">
+                                            <ul>
                                                 {work.desc?.map((item, index) => (
-                                                    <li className="app__skills-exp-work-desc-item" key={item + index}>
+                                                    <li key={item + index}>
                                                         {/*<CgCodeSlash/>*/}
                                                         <p className="p-text">{item}</p>
                                                     </li>

@@ -5,23 +5,26 @@
 }
 
 .app__work-filter {
+  margin: 4rem 0 2rem;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 
-  margin: 4rem 0 2rem;
-
   .app__work-filter-item {
+    margin: 0.5rem;
     padding: 0.5rem 1rem;
+
     border-radius: 0.5rem;
     background-color: #ffffff;
     color: #000;
     font-weight: 800;
+
     cursor: pointer;
+
     transition: all 0.3s ease;
-    margin: 0.5rem;
 
     &:hover {
       background-color: var(--secondary-color);
@@ -48,15 +51,17 @@
 
   .app__work-item {
     width: 270px;
-    flex-direction: column;
-
     margin: 2rem;
     padding: 1rem;
+
+    flex-direction: column;
+
     border-radius: 0.5rem;
     background-color: white;
     color: black;
 
     cursor: pointer;
+
     transition: all 0.3s ease;
 
     &:hover {
@@ -94,26 +99,31 @@
 }
 
 .app__work-hover {
+  width: 100%;
+  height: 100%;
+
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0.5rem;
+
   opacity: 0;
+
   transition: all 0.3s ease;
 
   div {
     width: 50px;
     height: 50px;
+    margin: 1rem;
+
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
-    margin: 1rem;
+
     font-family: var(--font-base);
     font-weight: 800;
     cursor: pointer;

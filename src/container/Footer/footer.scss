@@ -6,25 +6,41 @@
   h2 {
     font-family: var(--font-roboto-slab);
   }
+
+  @media screen and (max-width: 1200px) {
+    margin-top: 1rem;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media screen and (max-width: 786px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
 }
 
 .app__footer-cards {
   width: 60%;
+  margin: 4rem 2rem 2rem;
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin: 4rem 2rem 2rem;
 
   .app__footer-card {
-    min-width: 290px;
+    min-width: 270px;
+    margin: 1rem 0;
+    padding: 1rem;
+
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
-    margin: 1rem 0;
-    padding: 1rem;
     border-radius: 10px;
     cursor: pointer;
     background-color: #fef4f5;
@@ -37,10 +53,6 @@
       margin: 0 0.7rem;
     }
 
-    p {
-      font-weight: 600;
-    }
-
     a {
       text-decoration: none;
       font-weight: 600;
@@ -51,9 +63,32 @@
       box-shadow: 0 0 25px var(--lightPink-color);
     }
 
+    @media screen and (max-width: 1200px) {
+      width: 100px;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      a {
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 1rem;
+      }
+    }
+
     @media screen and (max-width: 450px) {
       width: 100%;
     }
+  }
+
+  @media screen and (max-width: 1200px) {
+    margin-top: 1.5rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -73,14 +108,17 @@
   div {
     width: 100%;
     margin: 0.75rem 0;
+
     border-radius: 10px;
-    cursor: pointer;
     background-color: var(--secondary-color);
+    cursor: pointer;
+
     transition: all 0.3s ease-in-out;
 
     input, textarea {
       width: 100%;
       padding: 0.95rem;
+
       border: none;
       border-radius: 7px;
       background-color: var(--white-color);
@@ -101,20 +139,22 @@
 
   button {
     padding: 1rem 2rem;
+    margin: 2rem 0 0 0;
+
     border-radius: 10px;
     border: 2px solid var(--secondary-color);
     background-color: var(--white-color);
-    font-weight: 500;
-    color: var(--secondary-color);
-    outline: none;
-    margin: 2rem 0 0 0;
 
-    transition: all 0.2s ease;
+    outline: none;
+    cursor: pointer;
 
     font-family: var(--font-code);
+    color: var(--secondary-color);
+    font-weight: 500;
     font-size: 0.9rem;
     text-transform: uppercase;
-    cursor: pointer;
+
+    transition: all 0.2s ease;
 
     &:hover {
       border: 2px solid var(--secondary-color);
@@ -122,10 +162,22 @@
       background-color: var(--secondary-color);
       color: var(--white-color);
     }
+
+    @media screen and (max-width: 1200px) {
+      margin: 1rem 0 0 0;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 80%;
+    margin: 0;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    margin: 1rem 0;
+
+    div {
+      margin: 0.5rem 0;
+    }
   }
 }

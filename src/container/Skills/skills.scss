@@ -6,6 +6,13 @@
   h2 {
     font-family: var(--font-roboto-slab);
   }
+
+  @media screen and (max-width: 1200px) {
+    margin-top: 1rem;
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
 }
 
 .app__skills-container {
@@ -15,6 +22,11 @@
   display: flex;
   flex-direction: row;
 
+  @media screen and (max-width: 1200px) {
+    width: auto;
+    margin-top: 1rem;
+  }
+
   @media screen and (max-width: 900px) {
     width: 100%;
     flex-direction: column;
@@ -22,28 +34,36 @@
 }
 
 .app__skills-list {
+  margin-right: 5rem;
+
   flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
-  margin-right: 5rem;
 
   p {
     font-family: var(--font-code);
   }
 
+  @media screen and (max-width: 1200px) {
+    margin-right: 1rem;
+  }
+
   @media screen and (max-width: 900px) {
     margin-right: 0;
+
     justify-content: center;
     align-items: center;
   }
 }
 
 .app__skills-item {
+  margin: 1rem;
+
   flex-direction: column;
   text-align: center;
-  margin: 1rem;
+
   transition: all 0.3s ease;
 
   div {
@@ -51,6 +71,7 @@
     height: 90px;
     border-radius: 50%;
     background-color: #ffffff;
+
     transition: all 0.3s ease;
 
     img {
@@ -89,14 +110,18 @@
       margin-top: 1rem;
     }
   }
+
+  @media screen and (max-width: 1200px) {
+    margin: 0.5rem;
+  }
 }
 
 .app__skills-exp {
-  flex: 1;
+  flex: 1.5;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-direction: column;
 
   @media screen and (max-width: 900px) {
     margin-top: 2rem;
@@ -105,53 +130,25 @@
 
 .app__skills-exp-item {
   width: 100%;
+  padding: 2%;
+  margin: 1rem 0;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 1rem 0;
-  padding: 2%;
+
   border-radius: 15px;
 
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.03);
     box-shadow: 0 0 20px var(--lightPink-color);
+    transform: scale(1.03);
   }
 }
 
-.app__skills-exp-works {
-  flex: 1;
-
-  .app__skills-exp-work {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    cursor: pointer;
-
-    h4 {
-      font-weight: 800;
-      font-family: var(--font-poppins);
-    }
-
-    p {
-      font-weight: 400;
-      color: var(--gray-color);
-      margin-top: 5px;
-      font-size: 1rem;
-      font-family: var(--font-poppins);
-    }
-  }
-
-  .work-desc {
-    font-family: var(--font-roboto-slab);
-  }
-}
-
-.app__skills-exp-single {
+.app__skills-exp-card {
   width: 100%;
   flex: 1;
   display: flex;
@@ -169,39 +166,75 @@
     font-family: var(--font-code);
   }
 
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    width: 6%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      width: 180px;
+      transform: rotate(-90deg);
+      margin-bottom: 2rem;
+    }
+  }
+
   @media screen and (max-width: 450px) {
     margin-right: 1rem;
   }
 }
 
-.app__skills-exp-work-desc {
-  list-style: none;
+.app__skills-exp-works {
+  flex: 1;
 
-  li {
-    margin-bottom: 0.5rem;
+  .app__skills-exp-title {
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    cursor: pointer;
+
+    h4 {
+      font-weight: 600;
+      font-family: var(--font-poppins);
+    }
+
+    p {
+      margin-top: 5px;
+
+      font-weight: 400;
+      font-size: 1rem;
+      font-family: var(--font-poppins);
+      color: var(--gray-color);
+    }
+
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 0.5rem;
+
+      p {
+        margin-top: 0;
+      }
+    }
   }
-}
 
-.app__skills-exp-work-desc-item {
-  p {
-    font-family: var(--font-roboto-slab);
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      p {
+        font-family: var(--font-roboto-slab);
+      }
+    }
   }
-}
 
-.skills-tooltip {
-  max-width: 300px !important;
-  background-color: var(--white-color) !important;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 5px !important;
-  padding: 1rem !important;
-  color: var(--gray-color) !important;
-  text-align: center !important;
-  line-height: 1.5 !important;
-  opacity: 1 !important;
-
-  @media screen and (min-width: 2000px) {
-    font-size: 1.75rem !important;
-    max-width: 500px !important;
-    line-height: 2 !important;
+  @media screen and (max-width: 1200px) {
+    ul {
+      margin-bottom: 0;
+    }
   }
 }

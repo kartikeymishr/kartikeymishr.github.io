@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-import './navbar.scss'
 import {images} from "../../constants";
 import {HiMenuAlt4, HiX} from "react-icons/hi";
 import {motion} from "framer-motion";
 import {navigation} from "../../constants/navigation";
 import pdf from "../../assets/Kartikey-Mishr-CV.pdf";
+import './navbar.scss'
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
@@ -25,8 +25,16 @@ const Navbar = () => {
                 ))}
             </ul>
 
-            <div className="app__navbar-resume-btn">
-                <a href={pdf} download="Kartikey Mishr CV.pdf">Download CV</a>
+            <div className="app__navbar-right">
+                <a
+                    className="app__navbar-resume-btn"
+                    href={pdf}
+                    download="Kartikey Mishr CV.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Download CV
+                </a>
             </div>
 
             <div className="app__navbar-menu">
@@ -44,6 +52,7 @@ const Navbar = () => {
                                 </li>
                             ))}
                         </ul>
+                        <a className="app__navbar-resume-btn" href={pdf} download="Kartikey Mishr CV.pdf">Download CV</a>
                     </motion.div>
                 )}
             </div>

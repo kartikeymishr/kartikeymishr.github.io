@@ -1,12 +1,15 @@
 .app__navbar {
   width: 100%;
+  padding: 1rem 2rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+
   backround: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+
   border: 1px solid rgba(255, 255, 255, 0.18);
   position: fixed;
   z-index: 2;
@@ -35,7 +38,6 @@
   align-items: center;
   list-style: none;
 
-
   li {
     margin: 0 1rem;
     cursor: pointer;
@@ -52,9 +54,10 @@
     }
 
     a {
-      color: var(--gray-color);
-      text-decoration: none;
       flex-direction: column;
+
+      text-decoration: none;
+      color: var(--gray-color);
       text-transform: uppercase;
       font-weight: 500;
       font-size: 0.9rem;
@@ -80,7 +83,14 @@
   }
 }
 
+.app__navbar-right {
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
 .app__navbar-resume-btn {
+  margin-right: auto;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   transition: all 0.2s ease;
@@ -91,20 +101,15 @@
 
   font-family: var(--font-code);
   text-transform: uppercase;
-
-  a {
-    text-decoration: none;
-    color: var(--secondary-color);
-  }
+  text-decoration: none;
+  color: var(--secondary-color);
 
   &:hover {
     border-radius: 30px;
     background-color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
 
-    a {
-      color: var(--white-color)
-    }
+    color: var(--white-color)
   }
 
 }
@@ -113,10 +118,12 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
+
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: var(--secondary-color);
 
   svg {
@@ -142,18 +149,16 @@
     align-items: flex-end;
     flex-direction: column;
 
-    background: url("../../assets/bgWhite.png");
-    background-color: var(--white-color);
+    background: var(--white-color) url("../../assets/bgWhite.png") repeat;
     background-size: cover;
-    background-repeat: repeat;
 
     box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
 
     svg {
       width: 35px;
       height: 35px;
-      color: var(--secondary-color);
       margin: 0.5rem 1rem;
+      color: var(--secondary-color);
     }
 
     ul {

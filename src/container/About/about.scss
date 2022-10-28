@@ -11,6 +11,12 @@
   span {
     font-family: var(--font-code);
   }
+
+  @media screen and (max-width: 900px) {
+    h2 {
+      margin-top: 0;
+    }
+  }
 }
 
 .app__profiles {
@@ -25,7 +31,7 @@
 
 .app__profiles-desc {
   margin: 1rem;
-  //width: 100%;
+  width: 120%;
 
   h2 {
     text-align: left;
@@ -39,6 +45,28 @@
     span {
       font-family: var(--font-code);
       color: var(--secondary-color)
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: auto;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    h2 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 0.9rem;
     }
   }
 }
@@ -77,30 +105,5 @@
     img {
       height: 320px;
     }
-  }
-}
-
-.app__profiles-cert {
-  margin-top: 2rem;
-  h4 {
-    font-size: 1.8rem;
-    font-family: var(--font-poppins);
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  h5 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-code);
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--secondary-color)
-  }
-
-  p {
-    font-family: var(--font-ubuntu);
   }
 }

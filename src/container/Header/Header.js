@@ -1,9 +1,10 @@
+import {Typewriter} from "react-simple-typewriter";
 import React from "react"
-import './header.scss'
 import {motion} from "framer-motion";
+
 import {images} from "../../constants";
 import {AppWrap} from "../../wrapper";
-import {Typewriter} from "react-simple-typewriter";
+import './header.scss'
 
 const scaleVariants = {
     whileInView: {
@@ -62,7 +63,7 @@ const Header = () => {
                     <span>
                         <Typewriter
                             words={['a developer.', 'a photographer.', 'an adventurer.', 'an aspiring designer.']}
-                            loop={false}
+                            loop={20}
                             cursor
                             cursorStyle='👩‍💻'
                             typeSpeed={85}

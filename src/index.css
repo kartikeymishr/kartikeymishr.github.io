@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Lato:wght@700;900&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;0,900;1,400&family=Roboto+Slab:wght@400;500&family=Source+Code+Pro:wght@600&family=Ubuntu&display=swap');
 
 :root {
-    /*--font-base: "DM Sans", sans-serif;*/
     --font-base: 'Ubuntu', sans-serif;
     --font-code: 'JetBrains Mono', monospace;
     --font-two: 'Lato', sans-serif;
