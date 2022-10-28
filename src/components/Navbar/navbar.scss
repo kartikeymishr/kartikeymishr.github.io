@@ -86,14 +86,15 @@
   transition: all 0.2s ease;
   cursor: pointer;
 
-  border: 2px solid var(--gray-color);
+  border: 2px solid var(--secondary-color);
+  background-color: var(--white-color);
 
   font-family: var(--font-code);
   text-transform: uppercase;
 
   a {
     text-decoration: none;
-    color: var(--gray-color);
+    color: var(--secondary-color);
   }
 
   &:hover {
