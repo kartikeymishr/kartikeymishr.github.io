@@ -56,7 +56,8 @@
   align-items: flex-start;
   flex-direction: column;
 
-  .badge-cmp, .tag-cmp {
+  .badge-cmp,
+  .tag-cmp {
     width: auto;
     padding: 1rem 2rem;
 
@@ -316,7 +317,7 @@
     z-index: 0;
   }
 
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1200px) {
     margin: 2rem 0;
   }
 }

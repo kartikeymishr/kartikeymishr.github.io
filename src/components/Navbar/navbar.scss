@@ -66,7 +66,7 @@
       transition: all 0.3s ease-in-out;
 
       &:hover {
-        color: var(--secondary-color)
+        color: var(--secondary-color);
       }
     }
 
@@ -109,9 +109,8 @@
     background-color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
 
-    color: var(--white-color)
+    color: var(--white-color);
   }
-
 }
 
 .app__navbar-menu {
@@ -129,7 +128,7 @@
   svg {
     width: 70%;
     height: 70%;
-    color: var(--white-color)
+    color: var(--white-color);
   }
 
   div {
@@ -186,7 +185,7 @@
           transition: all 0.3s ease-in-out;
 
           &:hover {
-            color: var(--secondary-color)
+            color: var(--secondary-color);
           }
         }
       }
