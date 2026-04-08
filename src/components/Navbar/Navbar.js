@@ -15,8 +15,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const logo =
-    theme === "dark" ? images.newLogoWhite : images.newLogoPurple;
+  const logo = images.newLogoPurple;
 
   return (
     <nav className="app__navbar">
