@@ -2,14 +2,22 @@
   position: relative;
   background: url("../../assets/bgIMG.png") repeat center;
   background-size: cover;
+  transition: background-color 0.3s ease;
 
   .app__wrapper {
     padding: 0;
+    position: relative;
+    z-index: 1;
 
     .copyright {
       display: none;
     }
   }
+}
+
+[data-theme="dark"] #home {
+  background-color: var(--primary-color);
+  background-blend-mode: multiply;
 }
 
 .app__header {
@@ -65,7 +73,7 @@
 
     border: var(--white-color);
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--shadow-color);
     background-color: var(--white-color);
 
     transition: all 0.3s ease-in-out;
@@ -159,7 +167,7 @@
 
     border-radius: 50%;
     background: var(--white-color);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--shadow-color);
 
     transition: all 0.3s ease-in-out;
 

@@ -21,6 +21,36 @@
   --new-purple-color: #8758ff;
   --new-blue-color: #5cb8e4;
   --new-gray-color: #f2f2f2;
+
+  --dot-color: #cbcbcb;
+  --footer-card-bg: #fef4f5;
+  --footer-card-alt-bg: #f3f7fb;
+  --navbar-glass-bg: rgba(255, 255, 255, 0.25);
+  --navbar-glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --mobile-menu-bg: var(--white-color);
+}
+
+[data-theme="dark"] {
+  --primary-color: #1a1a2e;
+  --secondary-color: #8758ff;
+  --black-color: #f0f0f0;
+  --lightGray-color: #2a2a3e;
+  --gray-color: #a0aec0;
+  --brown-color: #c9a0d0;
+  --white-color: #242438;
+  --lightPink-color: #2d1f3d;
+
+  --new-black-color: #f0f0f0;
+  --new-gray-color: #2a2a3e;
+
+  --dot-color: #4a4a5e;
+  --footer-card-bg: #2d1f3d;
+  --footer-card-alt-bg: #1e2a3a;
+  --navbar-glass-bg: rgba(26, 26, 46, 0.7);
+  --navbar-glass-border: rgba(135, 88, 255, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --mobile-menu-bg: #1a1a2e;
 }
 
 * {
