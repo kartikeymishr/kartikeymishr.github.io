@@ -21,15 +21,11 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  min-width: 200px;
 
   img {
-    width: 160px;
-    height: 30px;
-
-    @media screen and (min-width: 2000px) {
-      width: 400px;
-      height: 60px;
-    }
+    width: clamp(130px, 10vw, 280px);
+    height: auto;
   }
 }
 
@@ -88,7 +84,9 @@
 .app__navbar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.75rem;
+  min-width: 200px;
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -119,7 +117,7 @@
 
 .app__navbar-resume-btn {
   margin-right: auto;
-  padding: 0.5rem 1rem;
+  padding: clamp(0.35rem, 0.5vw, 0.6rem) clamp(0.7rem, 1vw, 1.2rem);
   border-radius: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -128,6 +126,7 @@
   background-color: var(--white-color);
 
   font-family: var(--font-code);
+  font-size: clamp(0.75rem, 0.8vw, 1rem);
   text-transform: uppercase;
   text-decoration: none;
   color: var(--secondary-color);
@@ -136,8 +135,19 @@
     border-radius: 30px;
     background-color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
-
     color: #ffffff;
+  }
+
+  [data-theme="dark"] & {
+    border-color: #ffffff;
+    color: #ffffff;
+    background-color: transparent;
+
+    &:hover {
+      background-color: #ffffff;
+      border-color: #ffffff;
+      color: var(--secondary-color);
+    }
   }
 }
 

@@ -15,7 +15,7 @@
     }
   }
 
-  @media screen and (max-width: 786px) {
+  @media screen and (max-width: 768px) {
     h2 {
       font-size: 1.4rem;
     }
@@ -23,7 +23,7 @@
 }
 
 .app__footer-cards {
-  width: 60%;
+  width: clamp(320px, 60%, 900px);
   margin: 4rem 2rem 2rem;
 
   display: flex;
@@ -102,7 +102,7 @@
 }
 
 .app__footer-form {
-  width: 60%;
+  width: clamp(320px, 60%, 900px);
   flex-direction: column;
   margin: 1rem 2rem;
 
@@ -137,6 +137,10 @@
     &:hover {
       box-shadow: 0 0 25px var(--primary-color);
     }
+
+    [data-theme="dark"] & {
+      background-color: #ffffff;
+    }
   }
 
   button {
@@ -163,6 +167,18 @@
       border-radius: 30px;
       background-color: var(--secondary-color);
       color: #ffffff;
+    }
+
+    [data-theme="dark"] & {
+      border-color: #ffffff;
+      color: #ffffff;
+      background-color: transparent;
+
+      &:hover {
+        background-color: #ffffff;
+        border-color: #ffffff;
+        color: var(--secondary-color);
+      }
     }
 
     @media screen and (max-width: 1200px) {
