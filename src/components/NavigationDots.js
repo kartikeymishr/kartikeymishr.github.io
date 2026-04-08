@@ -9,10 +9,11 @@ const NavigationDots = ({ active }) => {
           href={`#${item}`}
           key={item + index}
           className="app__navigation-dot"
+          aria-label={item}
           style={
             active === item ? { backgroundColor: "var(--secondary-color)" } : {}
           }
-        />
+        > </a>
       ))}
     </div>
   );

@@ -24,7 +24,7 @@ import newLogoBlack from "../assets/kmlogoblack.png";
 import kmgradient from "../assets/kmgradient.png";
 import gradientbg from "../assets/gradient-bg.png";
 
-export default {
+const images = {
   email,
   mobile,
   api,
@@ -48,3 +48,5 @@ export default {
   kmgradient,
   gradientbg,
 };
+
+export default images;
