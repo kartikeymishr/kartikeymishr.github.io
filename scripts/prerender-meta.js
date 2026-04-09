@@ -49,12 +49,29 @@ function loadBlogPosts() {
   }));
 }
 
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function replaceMetaTag(html, attr, name, value) {
-  const regex = new RegExp(
-    `<meta\\s+${attr}="${name}"\\s+content="[^"]*"`,
-    "g"
-  );
-  return html.replace(regex, `<meta ${attr}="${name}" content="${value}"`);
+  const identPattern = new RegExp(`\\s${escapeRegex(attr)}="${escapeRegex(name)}"`, "i");
+  let matched = false;
+
+  const result = html.replace(/<meta\s[^>]*>/gi, (tag) => {
+    if (!identPattern.test(tag)) return tag;
+    matched = true;
+    const updated = tag.replace(/(\scontent=)"[^"]*"/, `$1"${value}"`);
+    if (updated === tag) {
+      console.warn(`  ⚠ Found meta[${attr}="${name}"] but could not replace its content attribute`);
+    }
+    return updated;
+  });
+
+  if (!matched) {
+    console.warn(`  ⚠ No meta[${attr}="${name}"] found — content was not updated`);
+  }
+
+  return result;
 }
 
 function injectMeta(html, { title, description, route, type, date }) {
