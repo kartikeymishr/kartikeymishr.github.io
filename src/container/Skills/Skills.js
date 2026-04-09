@@ -143,11 +143,11 @@ const Skills = () => {
                     transition={{ duration: 0.5 }}
                     className="app__skills-item app__flex"
                     key={skill.name}
-                    title={skill.name}
                   >
                     <div className="app__flex">
                       <img src={skill.icon} alt={skill.name} />
                     </div>
+                    <p className="app__skills-item-label">{skill.name}</p>
                   </motion.div>
                 ))}
               </div>

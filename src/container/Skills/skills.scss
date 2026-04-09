@@ -55,7 +55,7 @@
 }
 
 .app__skills-category {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .app__skills-category-title {
@@ -91,8 +91,8 @@
   transition: all 0.3s ease;
 
   div {
-    width: clamp(56px, 4.5vw, 78px);
-    height: clamp(56px, 4.5vw, 78px);
+    width: clamp(68px, 5.5vw, 92px);
+    height: clamp(68px, 5.5vw, 92px);
     border-radius: 50%;
     background-color: var(--white-color);
 
@@ -102,19 +102,32 @@
       width: 55%;
       height: 55%;
     }
-
-    &:hover {
-      box-shadow: 0 0 25px var(--lightPink-color);
-    }
   }
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.25);
+
+    .app__skills-item-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media screen and (max-width: 1200px) {
     margin: 0.3rem;
   }
+}
+
+.app__skills-item-label {
+  margin-top: 0.4rem;
+  font-size: 0.65rem;
+  font-family: var(--font-code);
+  color: var(--gray-color);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
 }
 
 .app__skills-exp {

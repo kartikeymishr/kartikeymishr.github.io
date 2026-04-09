@@ -65,15 +65,15 @@ const Header = () => {
           <span>
             <Typewriter
               words={[
-                "a developer.",
-                "a photographer.",
-                "an adventurer.",
-                "an aspiring designer.",
+                "a developer",
+                "a photographer",
+                "an adventurer",
+                "an aspiring designer",
               ]}
               loop={20}
               cursor
-              cursorStyle="👩‍💻"
-              typeSpeed={85}
+              cursorStyle="|"
+              typeSpeed={75}
               deleteSpeed={50}
               delaySpeed={1000}
             />
