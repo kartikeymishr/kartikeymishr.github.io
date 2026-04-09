@@ -1,39 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import Tooltip from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
+import MuiTooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import AppsOutlined from "@mui/icons-material/AppsOutlined";
 import CameraAltOutlined from "@mui/icons-material/CameraAltOutlined";
 import ArticleOutlined from "@mui/icons-material/ArticleOutlined";
+import HomeOutlined from "@mui/icons-material/HomeOutlined";
+
+const StyledTooltip = styled(({ className, ...props }) => (
+  <MuiTooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "var(--secondary-color, #8758ff)",
+    color: "#ffffff",
+    fontSize: "0.85rem",
+    fontWeight: 600,
+    fontFamily: "var(--font-poppins, Poppins, sans-serif)",
+    padding: "0.5rem 1rem",
+    borderRadius: "8px",
+    letterSpacing: "0.03em",
+  },
+  [`& .${tooltipClasses.arrow}`]: {
+    color: "var(--secondary-color, #8758ff)",
+  },
+});
+
+const routeIcons = [
+  { path: "/apps", label: "Apps", Icon: AppsOutlined },
+  { path: "/photography", label: "Photography", Icon: CameraAltOutlined },
+  { path: "/blog", label: "Blog", Icon: ArticleOutlined },
+];
 
 const SocialMedia = () => {
+  const { pathname } = useLocation();
+  const isSubRoute = routeIcons.some(({ path }) => pathname.startsWith(path));
+
+  const otherRoutes = routeIcons.filter(({ path }) => !pathname.startsWith(path));
+
   return (
     <div className="app__social">
-      <Tooltip title="Apps" placement="right" arrow>
-        <Link to="/apps" aria-label="Apps">
-          <div>
-            <AppsOutlined />
-          </div>
-        </Link>
-      </Tooltip>
-      <Tooltip title="Photography" placement="right" arrow>
-        <Link to="/photography" aria-label="Photography">
-          <div>
-            <CameraAltOutlined />
-          </div>
-        </Link>
-      </Tooltip>
-      <Tooltip title="Blog" placement="right" arrow>
-        <Link to="/blog" aria-label="Blog">
-          <div>
-            <ArticleOutlined />
-          </div>
-        </Link>
-      </Tooltip>
+      {isSubRoute && (
+        <StyledTooltip title="Home" placement="right" arrow>
+          <Link to="/" aria-label="Home">
+            <div><HomeOutlined /></div>
+          </Link>
+        </StyledTooltip>
+      )}
+      {(isSubRoute ? otherRoutes : routeIcons).map(({ path, label, Icon }) => (
+        <StyledTooltip key={path} title={label} placement="right" arrow>
+          <Link to={path} aria-label={label}>
+            <div><Icon /></div>
+          </Link>
+        </StyledTooltip>
+      ))}
 
       <div className="app__social-separator" />
 
-      <Tooltip title="GitHub" placement="right" arrow>
+      <StyledTooltip title="GitHub" placement="right" arrow>
         <a
           href="https://github.com/kartikeymishr"
           target="_blank"
@@ -43,8 +67,8 @@ const SocialMedia = () => {
             <BsGithub />
           </div>
         </a>
-      </Tooltip>
-      <Tooltip title="LinkedIn" placement="right" arrow>
+      </StyledTooltip>
+      <StyledTooltip title="LinkedIn" placement="right" arrow>
         <a
           href="https://www.linkedin.com/in/kartikeymishr/"
           target="_blank"
@@ -54,7 +78,7 @@ const SocialMedia = () => {
             <BsLinkedin />
           </div>
         </a>
-      </Tooltip>
+      </StyledTooltip>
     </div>
   );
 };

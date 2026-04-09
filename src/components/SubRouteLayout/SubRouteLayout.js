@@ -1,15 +1,15 @@
 import React from "react";
-import { SocialMedia, NavigationDots } from "../index";
+import { SocialMedia } from "../index";
+import "./subroutelayout.scss";
 
 const SubRouteLayout = ({ children }) => {
   return (
-    <div className="app__container">
-      <SocialMedia />
-
-      <div className="app__wrapper app__flex">{children}</div>
-
-      <NavigationDots />
-    </div>
+    <>
+      <div className="app__subroute-social">
+        <SocialMedia />
+      </div>
+      {children}
+    </>
   );
 };
 
