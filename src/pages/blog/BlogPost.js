@@ -71,50 +71,84 @@ const BlogPost = () => {
     );
   }
 
-  return (
-    <motion.div
-      className="app__blog-post"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Link to="/blog" className="app__blog-post-back">
-        &larr; Back to all posts
-      </Link>
+  const tags = Array.isArray(post.meta.tags)
+    ? post.meta.tags
+    : post.meta.tags
+    ? [post.meta.tags]
+    : [];
 
-      <article className="app__blog-post-article">
-        <header>
-          <h1 className="head-text">{post.meta.title || slug}</h1>
-          {post.meta.date && (
-            <time className="p-text">
-              {new Date(post.meta.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-          )}
-          {post.meta.tags && (
-            <div className="app__blog-card-tags">
-              {(Array.isArray(post.meta.tags)
-                ? post.meta.tags
-                : [post.meta.tags]
-              ).map((tag) => (
-                <span key={tag} className="app__blog-tag">
-                  {tag}
-                </span>
-              ))}
+  return (
+    <div className="app__blog-post">
+      <div className="app__blog-post-layout">
+        <aside className="app__blog-sidebar">
+          <div className="app__blog-sidebar-section">
+            <h4>Navigate</h4>
+            <ul className="app__blog-sidebar-links">
+              <li>
+                <Link to="/blog">&larr; All Posts</Link>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            </ul>
+          </div>
+
+          {tags.length > 0 && (
+            <div className="app__blog-sidebar-section">
+              <h4>Tags</h4>
+              <div className="app__blog-sidebar-tags">
+                {tags.map((tag) => (
+                  <span key={tag} className="app__blog-sidebar-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           )}
-        </header>
+        </aside>
 
-        <div className="app__blog-post-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {post.body}
-          </ReactMarkdown>
-        </div>
-      </article>
-    </motion.div>
+        <motion.div
+          className="app__blog-post-main"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Link to="/blog" className="app__blog-post-back">
+            &larr; Back to all posts
+          </Link>
+
+          <article className="app__blog-post-article">
+            <header>
+              <h1 className="head-text">{post.meta.title || slug}</h1>
+              {post.meta.date && (
+                <time className="p-text">
+                  {new Date(post.meta.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              )}
+              {tags.length > 0 && (
+                <div className="app__blog-card-tags">
+                  {tags.map((tag) => (
+                    <span key={tag} className="app__blog-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </header>
+
+            <div className="app__blog-post-content">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {post.body}
+              </ReactMarkdown>
+            </div>
+          </article>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { images } from "../../constants";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
-import { navigation } from "../../constants/navigation";
+import { navbarLinks } from "../../constants/navigation";
 import { ThemeContext } from "../../context/ThemeContext";
 import IconButton from "@mui/material/IconButton";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -60,7 +60,7 @@ const Navbar = () => {
       </div>
 
       <ul className="app__navbar-links">
-        {navigation.map((item) => (
+        {navbarLinks.map((item) => (
           <li key={`link-${item.label}`} className="app__flex p-text">
             <div />
             <NavItem item={item} />
@@ -100,7 +100,7 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {navigation.map((item) => (
+              {navbarLinks.map((item) => (
                 <li key={item.label}>
                   <NavItem item={item} onClick={() => setToggle(false)} />
                 </li>
