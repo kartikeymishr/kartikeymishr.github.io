@@ -5,9 +5,10 @@ import { HelmetProvider } from "react-helmet-async";
 import { Navbar, SubRouteNavbar, SubRouteLayout } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
-import AppsLanding from "./pages/apps/AppsLanding";
-import AppDetail from "./pages/apps/AppDetail";
-import Photography from "./pages/photography/Photography";
+// import AppsLanding from "./pages/apps/AppsLanding";
+// import AppDetail from "./pages/apps/AppDetail";
+// import Photography from "./pages/photography/Photography";
+import ComingSoon from "./pages/ComingSoon";
 import BlogListing from "./pages/blog/BlogListing";
 import BlogPost from "./pages/blog/BlogPost";
 import "./App.scss";
@@ -33,7 +34,7 @@ const AppShell = () => {
           path="/apps"
           element={
             <SubRouteLayout>
-              <AppsLanding />
+              <ComingSoon title="Apps" />
             </SubRouteLayout>
           }
         />
@@ -41,7 +42,7 @@ const AppShell = () => {
           path="/apps/:slug"
           element={
             <SubRouteLayout>
-              <AppDetail />
+              <ComingSoon title="Apps" />
             </SubRouteLayout>
           }
         />
@@ -49,7 +50,7 @@ const AppShell = () => {
           path="/photography"
           element={
             <SubRouteLayout>
-              <Photography />
+              <ComingSoon title="Photography" />
             </SubRouteLayout>
           }
         />
