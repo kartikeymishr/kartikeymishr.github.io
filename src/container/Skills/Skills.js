@@ -1,5 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import {
@@ -8,9 +10,123 @@ import {
 } from "../../constants/fallbackData";
 import "./skills.scss";
 
+const MAX_BULLETS = 3;
+
+const ExpPill = ({ exp, onClick }) => {
+  const totalBullets = exp.works.reduce(
+    (sum, w) => sum + (w.desc?.length || 0),
+    0
+  );
+  const hasOverflow = totalBullets > MAX_BULLETS;
+  let bulletsShown = 0;
+
+  return (
+    <motion.div
+      className="app__skills-exp-item app__skills-exp-pill"
+      whileInView={{ opacity: [0, 1] }}
+      transition={{ duration: 0.5 }}
+      onClick={onClick}
+    >
+      <div className="app__skills-exp-card">
+        <div className="app__skills-exp-year">
+          <p className="bold-text">{exp.year}</p>
+        </div>
+        <div className="app__skills-exp-works">
+          {exp.works.map((work) => {
+            const remaining = MAX_BULLETS - bulletsShown;
+            const visibleDesc = (work.desc || []).slice(
+              0,
+              Math.max(0, remaining)
+            );
+            bulletsShown += visibleDesc.length;
+
+            return (
+              <div key={work.name}>
+                <div className="app__skills-exp-title">
+                  <h4 className="bold-text">{work.name}</h4>
+                  <p className="p-text">{work.company}</p>
+                </div>
+                {visibleDesc.length > 0 && (
+                  <ul>
+                    {visibleDesc.map((item, i) => (
+                      <li key={i}>
+                        <p className="p-text">{item}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+          {hasOverflow && (
+            <p className="app__skills-exp-more p-text">...</p>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const ExpOverlay = ({ exp, onClose }) => (
+  <motion.div
+    className="app__skills-overlay-backdrop"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3 }}
+    onClick={onClose}
+  >
+    <motion.div
+      className="app__skills-overlay-panel"
+      initial={{ opacity: 0, scale: 0.92, y: 30 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.92, y: 30 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <IconButton
+        className="app__skills-overlay-close"
+        onClick={onClose}
+        aria-label="Close"
+      >
+        <CloseIcon />
+      </IconButton>
+
+      <div className="app__skills-overlay-year">
+        <p className="bold-text">{exp.year}</p>
+      </div>
+
+      <div className="app__skills-overlay-content">
+        {exp.works.map((work) => (
+          <div className="app__skills-overlay-role" key={work.name}>
+            <h4 className="bold-text">{work.name}</h4>
+            <p className="p-text app__skills-overlay-company">
+              {work.company}
+            </p>
+            <ul>
+              {work.desc?.map((item, i) => (
+                <li key={i}>
+                  <p className="p-text">{item}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  </motion.div>
+);
+
 const Skills = () => {
   const experience = fallbackExperiences;
   const skills = fallbackSkills;
+  const [expandedYear, setExpandedYear] = useState(null);
+
+  const expandedExp = expandedYear
+    ? experience.find((e) => e.year === expandedYear)
+    : null;
+
+  const closeOverlay = useCallback(() => setExpandedYear(null), []);
 
   return (
     <>
@@ -41,45 +157,24 @@ const Skills = () => {
           ))}
         </div>
 
-        <motion.div className="app__skills-exp">
+        <div className="app__skills-exp">
           {experience
             ?.sort((a, b) => (a.year > b.year ? -1 : 1))
             .map((exp) => (
-              <motion.div className="app__skills-exp-item" key={exp.year}>
-                <div className="app__skills-exp-card">
-                  <div className="app__skills-exp-year">
-                    <p className="bold-text">{exp.year}</p>
-                  </div>
-                  <motion.div className="app__skills-exp-works">
-                    {exp.works.map((work) => (
-                      <>
-                        <motion.div
-                          whileInView={{ opacity: [0, 1] }}
-                          transition={{ duration: 0.5 }}
-                          className="app__skills-exp-title"
-                          data-tip
-                          data-for={work.name}
-                          key={work.name}
-                        >
-                          <h4 className="bold-text">{work.name}</h4>
-                          <p className="p-text">{work.company}</p>
-                        </motion.div>
-                        <ul>
-                          {work.desc?.map((item, index) => (
-                            <li key={item + index}>
-                              {/*<CgCodeSlash/>*/}
-                              <p className="p-text">{item}</p>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    ))}
-                  </motion.div>
-                </div>
-              </motion.div>
+              <ExpPill
+                key={exp.year}
+                exp={exp}
+                onClick={() => setExpandedYear(exp.year)}
+              />
             ))}
-        </motion.div>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {expandedExp && (
+          <ExpOverlay exp={expandedExp} onClose={closeOverlay} />
+        )}
+      </AnimatePresence>
     </>
   );
 };

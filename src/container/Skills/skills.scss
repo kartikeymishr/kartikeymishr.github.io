@@ -83,7 +83,7 @@
 }
 
 .app__skills-item {
-  margin: 0.4rem;
+  margin: 0.5rem;
 
   flex-direction: column;
   text-align: center;
@@ -91,8 +91,8 @@
   transition: all 0.3s ease;
 
   div {
-    width: clamp(42px, 3vw, 60px);
-    height: clamp(42px, 3vw, 60px);
+    width: clamp(50px, 4vw, 70px);
+    height: clamp(50px, 4vw, 70px);
     border-radius: 50%;
     background-color: var(--white-color);
 
@@ -132,7 +132,7 @@
 .app__skills-exp-item {
   width: 100%;
   padding: 2%;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 
   display: flex;
   flex-direction: row;
@@ -142,11 +142,26 @@
   border-radius: 15px;
 
   transition: all 0.3s ease;
+}
+
+.app__skills-exp-pill {
+  cursor: pointer;
+  border: 1px solid transparent;
 
   &:hover {
     box-shadow: 0 0 20px var(--lightPink-color);
-    transform: scale(1.03);
+    transform: scale(1.02);
+    border-color: var(--secondary-color);
   }
+}
+
+.app__skills-exp-more {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  margin-top: 0.25rem;
+  opacity: 0.7;
 }
 
 .app__skills-exp-card {
@@ -189,14 +204,12 @@
   flex: 1;
 
   .app__skills-exp-title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
-    cursor: pointer;
 
     h4 {
       font-weight: 600;
@@ -204,16 +217,15 @@
     }
 
     p {
-      margin-top: 5px;
-
+      margin-top: 3px;
       font-weight: 400;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-family: var(--font-poppins);
       color: var(--gray-color);
     }
 
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
 
       p {
         margin-top: 0;
@@ -223,12 +235,15 @@
 
   ul {
     list-style: none;
+    margin-bottom: 0.5rem;
 
     li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
 
       p {
         font-family: var(--font-roboto-slab);
+        font-size: 0.85rem;
+        line-height: 1.4;
       }
     }
   }
@@ -236,6 +251,101 @@
   @media screen and (max-width: 1200px) {
     ul {
       margin-bottom: 0;
+    }
+  }
+}
+
+// --- Overlay ---
+
+.app__skills-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.app__skills-overlay-panel {
+  position: relative;
+  width: min(90vw, 720px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--white-color);
+  border-radius: 20px;
+  padding: 2.5rem 2.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+  @media screen and (max-width: 600px) {
+    width: 96vw;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 14px;
+  }
+}
+
+.app__skills-overlay-close {
+  position: absolute !important;
+  top: 1rem;
+  right: 1rem;
+  color: var(--secondary-color) !important;
+}
+
+.app__skills-overlay-year {
+  margin-bottom: 1.5rem;
+
+  p {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    font-family: var(--font-code);
+  }
+}
+
+.app__skills-overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app__skills-overlay-role {
+  h4 {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: var(--font-poppins);
+    margin-bottom: 0.2rem;
+  }
+
+  .app__skills-overlay-company {
+    font-size: 0.95rem;
+    color: var(--gray-color);
+    font-family: var(--font-poppins);
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 0.6rem;
+      padding-left: 1rem;
+      position: relative;
+
+      &::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--secondary-color);
+        font-weight: 700;
+      }
+
+      p {
+        font-family: var(--font-roboto-slab);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
     }
   }
 }
