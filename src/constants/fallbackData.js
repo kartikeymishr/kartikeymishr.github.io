@@ -1,34 +1,73 @@
 import html from "../assets/html.png";
-import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
 import react from "../assets/react.png";
 import redux from "../assets/redux.png";
-import sass from "../assets/sass.png";
-import bootstrap from "../assets/bootstrap.png";
-import tailwind from "../assets/tailwind.png";
 import java from "../assets/java.png";
 import spring from "../assets/spring.png";
 import git from "../assets/git.png";
 import api from "../assets/api.png";
+import typescript from "../assets/typescript.svg";
+import python from "../assets/python.svg";
+import dotnet from "../assets/dotnet.svg";
+import zustand from "../assets/zustand.png";
+import angular from "../assets/angular.svg";
+import kafka from "../assets/kafka.svg";
+import aws from "../assets/aws.svg";
+import gcp from "../assets/gcp.svg";
+import docker from "../assets/docker.svg";
 
 export const fallbackSkills = [
-  { name: "React", icon: react },
-  { name: "JavaScript", icon: javascript },
-  { name: "Redux", icon: redux },
-  { name: "Java 8", icon: java },
-  { name: "Spring Boot", icon: spring },
-  { name: "HTML5", icon: html },
-  { name: "CSS3", icon: css },
-  { name: "Sass", icon: sass },
-  { name: "Tailwind CSS", icon: tailwind },
-  { name: "Bootstrap", icon: bootstrap },
-  { name: "Git", icon: git },
-  { name: "REST APIs", icon: api },
+  {
+    category: "Languages",
+    items: [
+      { name: "Java", icon: java },
+      { name: "JavaScript", icon: javascript },
+      { name: "TypeScript", icon: typescript },
+      { name: "Python", icon: python },
+      { name: "C# (.NET)", icon: dotnet },
+    ],
+  },
+  {
+    category: "Frontend",
+    items: [
+      { name: "React", icon: react },
+      { name: "Redux", icon: redux },
+      { name: "Zustand", icon: zustand },
+      { name: "Angular", icon: angular },
+      { name: "HTML/CSS", icon: html },
+    ],
+  },
+  {
+    category: "Backend & Infra",
+    items: [
+      { name: "Spring Boot", icon: spring },
+      { name: "Kafka", icon: kafka },
+      { name: "REST APIs", icon: api },
+      { name: "AWS", icon: aws },
+      { name: "GCP", icon: gcp },
+      { name: "Docker", icon: docker },
+      { name: "Git", icon: git },
+    ],
+  },
 ];
 
 export const fallbackExperiences = [
   {
-    year: "2020 - Current",
+    year: "2023 - Current",
+    works: [
+      {
+        name: "Software Engineer II",
+        company: "McKinsey & Company",
+        desc: [
+          "Building product-focused applications for life sciences clients, combining GenAI capabilities with robust distributed systems.",
+          "Designing and implementing end-to-end workflows that integrate LLMs into production-grade platforms with reliable failure handling.",
+          "Contributing to system design decisions across the full stack — from React frontends to Spring Boot and Python microservices on AWS.",
+        ],
+      },
+    ],
+  },
+  {
+    year: "2018 - 2023",
     works: [
       {
         name: "Full Stack Java Developer",
@@ -40,11 +79,6 @@ export const fallbackExperiences = [
           "Managed and collaborated on builds and releases across multiple apps with GitHub and Jenkins.",
         ],
       },
-    ],
-  },
-  {
-    year: "2018 - 2023",
-    works: [
       {
         name: "Cloud Microservices Developer",
         company: "IBM",

@@ -113,6 +113,7 @@
     border-radius: 10px;
     background-color: var(--secondary-color);
     cursor: pointer;
+    position: relative;
 
     transition: all 0.3s ease-in-out;
 
@@ -132,6 +133,7 @@
 
     textarea {
       height: 170px;
+      resize: none;
     }
 
     &:hover {
@@ -140,6 +142,14 @@
 
     [data-theme="dark"] & {
       background-color: #ffffff;
+    }
+  }
+
+  .app__footer-input-error {
+    background-color: #e05c5c;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(224, 92, 92, 0.35);
     }
   }
 
@@ -162,11 +172,16 @@
 
     transition: all 0.2s ease;
 
-    &:hover {
+    &:hover:not(:disabled) {
       border: 2px solid var(--secondary-color);
       border-radius: 30px;
       background-color: var(--secondary-color);
       color: #ffffff;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
     [data-theme="dark"] & {
@@ -174,7 +189,7 @@
       color: #ffffff;
       background-color: transparent;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: #ffffff;
         border-color: #ffffff;
         color: var(--secondary-color);
@@ -198,4 +213,27 @@
       margin: 0.5rem 0;
     }
   }
+}
+
+.app__footer-field-error {
+  display: block;
+  width: 100%;
+  font-size: 0.72rem;
+  color: #e05c5c;
+  font-family: var(--font-code);
+  padding: 0.15rem 0.25rem 0;
+  margin-top: -0.4rem;
+  text-align: left;
+}
+
+.app__footer-char-count {
+  display: block;
+  position: absolute;
+  bottom: 0.45rem;
+  right: 0.65rem;
+  font-size: 0.65rem;
+  font-family: var(--font-code);
+  color: var(--gray-color);
+  opacity: 0.6;
+  pointer-events: none;
 }

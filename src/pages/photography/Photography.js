@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { photos } from "../../constants/photos";
 import "./photography.scss";
 
@@ -8,6 +9,15 @@ const Photography = () => {
 
   return (
     <div className="app__photography">
+      <Helmet>
+        <title>Photography — Kartikey Mishr</title>
+        <meta name="description" content="A collection of moments captured through my lens." />
+        <meta property="og:title" content="Photography — Kartikey Mishr" />
+        <meta property="og:description" content="A collection of moments captured through my lens." />
+        <meta property="og:url" content="https://www.kartikeymishr.com/photography" />
+        <meta name="twitter:title" content="Photography — Kartikey Mishr" />
+        <meta name="twitter:description" content="A collection of moments captured through my lens." />
+      </Helmet>
       <h2 className="head-text">
         <span>Photography</span>
       </h2>

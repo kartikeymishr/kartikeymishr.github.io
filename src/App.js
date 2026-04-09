@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import { Navbar, SubRouteNavbar, SubRouteLayout } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -75,11 +76,13 @@ const AppShell = () => {
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <AppShell />
-      </BrowserRouter>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <AppShell />
+        </BrowserRouter>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 };
 

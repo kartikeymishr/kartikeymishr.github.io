@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { projects } from "../../constants/projects";
 import "./apps.scss";
 
@@ -27,6 +28,15 @@ const AppsLanding = () => {
 
   return (
     <div className="app__apps">
+      <Helmet>
+        <title>Projects — Kartikey Mishr</title>
+        <meta name="description" content="Explore my portfolio of projects and applications." />
+        <meta property="og:title" content="Projects — Kartikey Mishr" />
+        <meta property="og:description" content="Explore my portfolio of projects and applications." />
+        <meta property="og:url" content="https://www.kartikeymishr.com/apps" />
+        <meta name="twitter:title" content="Projects — Kartikey Mishr" />
+        <meta name="twitter:description" content="Explore my portfolio of projects and applications." />
+      </Helmet>
       <h2 className="head-text">
         My <span>Projects</span>
       </h2>
