@@ -55,7 +55,7 @@
 }
 
 .app__skills-category {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .app__skills-category-title {
@@ -83,7 +83,7 @@
 }
 
 .app__skills-item {
-  margin: 1rem;
+  margin: 0.4rem;
 
   flex-direction: column;
   text-align: center;
@@ -91,16 +91,16 @@
   transition: all 0.3s ease;
 
   div {
-    width: clamp(70px, 5vw, 130px);
-    height: clamp(70px, 5vw, 130px);
+    width: clamp(42px, 3vw, 60px);
+    height: clamp(42px, 3vw, 60px);
     border-radius: 50%;
     background-color: var(--white-color);
 
     transition: all 0.3s ease;
 
     img {
-      width: 50%;
-      height: 50%;
+      width: 55%;
+      height: 55%;
     }
 
     &:hover {
@@ -108,17 +108,12 @@
     }
   }
 
-  p {
-    font-weight: 500;
-    margin-top: 0.5rem;
-  }
-
   &:hover {
     transform: scale(1.1);
   }
 
   @media screen and (max-width: 1200px) {
-    margin: 0.5rem;
+    margin: 0.3rem;
   }
 }
 
