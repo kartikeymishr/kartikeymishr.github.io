@@ -9,7 +9,7 @@ export const navigation = [
 ];
 
 export const navbarLinks = [
-  { label: "home", path: "/", type: "route" },
+  { label: "home", path: "/#home", type: "hash" },
   { label: "about", path: "/#about", type: "hash" },
   { label: "experience", path: "/#experience", type: "hash" },
   { label: "contact", path: "/#contact", type: "hash" },
