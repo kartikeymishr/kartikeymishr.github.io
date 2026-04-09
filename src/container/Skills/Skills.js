@@ -1,80 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { client, urlFor } from "../../client";
 import {
   fallbackSkills,
   fallbackExperiences,
 } from "../../constants/fallbackData";
 import "./skills.scss";
 
-const skillIcon = (skill) => {
-  if (skill.icon?._type === "image") return urlFor(skill.icon);
-  return skill.icon;
-};
-
 const Skills = () => {
-  const [experience, setExperience] = useState(fallbackExperiences);
-  const [skills, setSkills] = useState(fallbackSkills);
-
-  useEffect(() => {
-    client
-      .fetch('*[_type == "experiences"]')
-      .then((data) => {
-        if (data?.length) setExperience(data);
-      })
-      .catch(() => {});
-
-    client
-      .fetch('*[_type == "skills"]')
-      .then((data) => {
-        if (data?.length) setSkills(data);
-      })
-      .catch(() => {});
-  }, []);
+  const experience = fallbackExperiences;
+  const skills = fallbackSkills;
 
   return (
     <>
       <h2 className="head-text">Skills and Work Experience</h2>
       <div className="app__skills-container">
         <div className="app__skills-list">
-          {skills[0]?.category
-            ? skills.map((group) => (
-                <div className="app__skills-category" key={group.category}>
-                  <h4 className="app__skills-category-title">
-                    {group.category}
-                  </h4>
-                  <div className="app__skills-category-items">
-                    {group.items.map((skill) => (
-                      <motion.div
-                        whileInView={{ opacity: [0, 1] }}
-                        transition={{ duration: 0.5 }}
-                        className="app__skills-item app__flex"
-                        key={skill.name}
-                        title={skill.name}
-                      >
-                        <div className="app__flex">
-                          <img src={skillIcon(skill)} alt={skill.name} />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              ))
-            : skills.map((skill) => (
-                <motion.div
-                  whileInView={{ opacity: [0, 1] }}
-                  transition={{ duration: 0.5 }}
-                  className="app__skills-item app__flex"
-                  key={skill.name}
-                >
-                  <div className="app__flex">
-                    <img src={skillIcon(skill)} alt={skill.name} />
-                  </div>
-                  <p className="p-text">{skill.name}</p>
-                </motion.div>
-              ))}
+          {skills.map((group) => (
+            <div className="app__skills-category" key={group.category}>
+              <h4 className="app__skills-category-title">
+                {group.category}
+              </h4>
+              <div className="app__skills-category-items">
+                {group.items.map((skill) => (
+                  <motion.div
+                    whileInView={{ opacity: [0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className="app__skills-item app__flex"
+                    key={skill.name}
+                    title={skill.name}
+                  >
+                    <div className="app__flex">
+                      <img src={skill.icon} alt={skill.name} />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <motion.div className="app__skills-exp">
