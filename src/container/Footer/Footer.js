@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { images } from "../../constants";
-import { client } from "../../client";
+import { writeClient } from "../../client";
 import "./footer.scss";
 
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
       message: message,
     };
 
-    client.create(contact).then(() => {
+    writeClient.create(contact).then(() => {
       setLoading(false);
       setIsFormSubmitted(true);
     });

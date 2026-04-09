@@ -3,23 +3,35 @@ import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { client, urlFor } from "../../client";
+import {
+  fallbackSkills,
+  fallbackExperiences,
+} from "../../constants/fallbackData";
 import "./skills.scss";
 
+const skillIcon = (skill) => {
+  if (skill.icon?._type === "image") return urlFor(skill.icon);
+  return skill.icon;
+};
+
 const Skills = () => {
-  const [experience, setExperience] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const [experience, setExperience] = useState(fallbackExperiences);
+  const [skills, setSkills] = useState(fallbackSkills);
 
   useEffect(() => {
-    const qExp = '*[_type == "experiences"]';
-    const qSkills = '*[_type == "skills"]';
+    client
+      .fetch('*[_type == "experiences"]')
+      .then((data) => {
+        if (data?.length) setExperience(data);
+      })
+      .catch(() => {});
 
-    client.fetch(qExp).then((data) => {
-      setExperience(data);
-    });
-
-    client.fetch(qSkills).then((data) => {
-      setSkills(data);
-    });
+    client
+      .fetch('*[_type == "skills"]')
+      .then((data) => {
+        if (data?.length) setSkills(data);
+      })
+      .catch(() => {});
   }, []);
 
   return (
@@ -35,7 +47,7 @@ const Skills = () => {
               key={skill.name}
             >
               <div className="app__flex">
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                <img src={skillIcon(skill)} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
