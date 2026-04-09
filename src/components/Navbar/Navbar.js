@@ -1,15 +1,49 @@
 import React, { useState, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { images } from "../../constants";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
-import { navigation } from "../../constants/navigation";
+import { navbarLinks } from "../../constants/navigation";
 import { ThemeContext } from "../../context/ThemeContext";
 import IconButton from "@mui/material/IconButton";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import pdf from "../../assets/Kartikey-Mishr-CV.pdf";
 import "./navbar.scss";
+
+const NavItem = ({ item, onClick }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = (e) => {
+    if (item.type === "hash") {
+      e.preventDefault();
+      const sectionId = item.path.replace("/#", "");
+      if (location.pathname !== "/") {
+        navigate("/", { state: { scrollTo: sectionId } });
+      } else {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    if (onClick) onClick();
+  };
+
+  if (item.type === "route") {
+    return (
+      <Link to={item.path} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={item.path} onClick={handleClick}>
+      {item.label}
+    </a>
+  );
+};
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -20,16 +54,16 @@ const Navbar = () => {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <a href="#home">
+        <Link to="/">
           <img src={logo} alt="" />
-        </a>
+        </Link>
       </div>
 
       <ul className="app__navbar-links">
-        {navigation.map((item) => (
-          <li key={`link-${item}`} className="app__flex p-text">
+        {navbarLinks.map((item) => (
+          <li key={`link-${item.label}`} className="app__flex p-text">
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <NavItem item={item} />
           </li>
         ))}
       </ul>
@@ -66,11 +100,9 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {navigation.map((item) => (
-                <li key={item}>
-                  <a onClick={() => setToggle(false)} href={`#${item}`}>
-                    {item}
-                  </a>
+              {navbarLinks.map((item) => (
+                <li key={item.label}>
+                  <NavItem item={item} onClick={() => setToggle(false)} />
                 </li>
               ))}
             </ul>

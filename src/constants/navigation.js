@@ -1,7 +1,25 @@
 export const navigation = [
-  "home",
-  "about",
-  "experience",
-  // 'work',
-  "contact",
+  { label: "home", path: "/", type: "route" },
+  { label: "about", path: "/#about", type: "hash" },
+  { label: "experience", path: "/#experience", type: "hash" },
+  { label: "apps", path: "/apps", type: "route" },
+  { label: "photography", path: "/photography", type: "route" },
+  { label: "blog", path: "/blog", type: "route" },
+  { label: "contact", path: "/#contact", type: "hash" },
+];
+
+export const navbarLinks = [
+  { label: "home", path: "/#home", type: "hash" },
+  { label: "about", path: "/#about", type: "hash" },
+  { label: "experience", path: "/#experience", type: "hash" },
+  { label: "contact", path: "/#contact", type: "hash" },
+];
+
+export const homeSections = ["home", "about", "experience", "contact"];
+
+export const subRouteDots = [
+  { label: "home", path: "/" },
+  { label: "apps", path: "/apps" },
+  { label: "photography", path: "/photography" },
+  { label: "blog", path: "/blog" },
 ];
