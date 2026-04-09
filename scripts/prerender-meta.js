@@ -1,17 +1,17 @@
 /**
  * Post-build script that creates route-specific HTML files with correct
- * <title>, description, and Open Graph meta tags so that link unfurlers
- * (Slack, Discord, Twitter, iMessage) see meaningful previews without
+ * <title>, description, Open Graph meta tags, and — for blog posts —
+ * the full rendered article body so that link unfurlers AND importers
+ * (Medium, Slack, Discord, iMessage) see meaningful content without
  * executing JavaScript.
- *
- * Reads the base build/index.html and generates copies for each known
- * route with the meta tags swapped in.
  */
 
 const fs = require("fs");
 const path = require("path");
+const { marked } = require("marked");
 
 const BUILD = path.resolve(__dirname, "..", "build");
+const POSTS_DIR = path.resolve(__dirname, "..", "public", "blog", "posts");
 const BASE_URL = "https://www.kartikeymishr.com";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
@@ -36,17 +36,63 @@ const staticRoutes = [
   },
 ];
 
+function parseFrontmatter(content) {
+  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return { meta: {}, body: content };
+
+  const meta = {};
+  match[1].split("\n").forEach((line) => {
+    const [key, ...rest] = line.split(":");
+    if (key && rest.length) {
+      let value = rest.join(":").trim();
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      if (value.startsWith("[") && value.endsWith("]")) {
+        value = value
+          .slice(1, -1)
+          .split(",")
+          .map((v) => v.trim().replace(/^"|"$/g, ""));
+      }
+      meta[key.trim()] = value;
+    }
+  });
+
+  return { meta, body: match[2] };
+}
+
 function loadBlogPosts() {
   const indexPath = path.resolve(__dirname, "..", "public", "blog", "index.json");
   if (!fs.existsSync(indexPath)) return [];
   const posts = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
-  return posts.map((p) => ({
-    route: `/blog/${p.slug}`,
-    title: `${p.title} — Kartikey Mishr`,
-    description: p.excerpt || "",
-    type: "article",
-    date: p.date || null,
-  }));
+  return posts.map((p) => {
+    let articleHtml = "";
+    const mdPath = path.join(POSTS_DIR, `${p.slug}.md`);
+    if (fs.existsSync(mdPath)) {
+      const raw = fs.readFileSync(mdPath, "utf-8");
+      const { meta, body } = parseFrontmatter(raw);
+      const renderedBody = marked.parse(body);
+      const dateStr = meta.date
+        ? new Date(meta.date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        : "";
+      articleHtml = `<article><h1>${meta.title || p.title}</h1>${
+        dateStr ? `<time>${dateStr}</time>` : ""
+      }${renderedBody}</article>`;
+    }
+
+    return {
+      route: `/blog/${p.slug}`,
+      title: `${p.title} — Kartikey Mishr`,
+      description: p.excerpt || "",
+      type: "article",
+      date: p.date || null,
+      articleHtml,
+    };
+  });
 }
 
 function escapeRegex(str) {
@@ -74,7 +120,7 @@ function replaceMetaTag(html, attr, name, value) {
   return result;
 }
 
-function injectMeta(html, { title, description, route, type, date }) {
+function injectMeta(html, { title, description, route, type, date, articleHtml }) {
   let out = html;
 
   out = out.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
@@ -102,6 +148,10 @@ function injectMeta(html, { title, description, route, type, date }) {
   out = replaceMetaTag(out, "name", "twitter:title", title);
   out = replaceMetaTag(out, "name", "twitter:description", description);
 
+  if (articleHtml) {
+    out = out.replace('<div id="root"></div>', `<div id="root">${articleHtml}</div>`);
+  }
+
   return out;
 }
 
@@ -111,7 +161,7 @@ function writeRouteHtml(routeDef) {
 
   const html = injectMeta(baseHtml, routeDef);
   fs.writeFileSync(path.join(dir, "index.html"), html, "utf-8");
-  console.log(`  ✓ ${routeDef.route}`);
+  console.log(`  ✓ ${routeDef.route}${routeDef.articleHtml ? " (with article body)" : ""}`);
 }
 
 console.log("Pre-rendering meta tags for routes:");
