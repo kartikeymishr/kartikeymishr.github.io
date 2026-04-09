@@ -33,11 +33,9 @@ const ExpPill = ({ exp, onClick }) => {
         </div>
         <div className="app__skills-exp-works">
           {exp.works.map((work) => {
+            if (bulletsShown >= MAX_BULLETS) return null;
             const remaining = MAX_BULLETS - bulletsShown;
-            const visibleDesc = (work.desc || []).slice(
-              0,
-              Math.max(0, remaining)
-            );
+            const visibleDesc = (work.desc || []).slice(0, remaining);
             bulletsShown += visibleDesc.length;
 
             return (
