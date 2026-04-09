@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import "./blog.scss";
 
 const parseFrontmatter = (content) => {
@@ -77,8 +78,23 @@ const BlogPost = () => {
     ? [post.meta.tags]
     : [];
 
+  const postTitle = post.meta.title || slug;
+  const postDescription = post.meta.excerpt || post.body.slice(0, 160).replace(/\n/g, " ");
+  const postUrl = `https://www.kartikeymishr.com/blog/${slug}`;
+
   return (
     <div className="app__blog-post">
+      <Helmet>
+        <title>{postTitle} — Kartikey Mishr</title>
+        <meta name="description" content={postDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${postTitle} — Kartikey Mishr`} />
+        <meta property="og:description" content={postDescription} />
+        <meta property="og:url" content={postUrl} />
+        {post.meta.date && <meta property="article:published_time" content={post.meta.date} />}
+        <meta name="twitter:title" content={`${postTitle} — Kartikey Mishr`} />
+        <meta name="twitter:description" content={postDescription} />
+      </Helmet>
       <div className="app__blog-post-layout">
         <aside className="app__blog-sidebar">
           <div className="app__blog-sidebar-section">

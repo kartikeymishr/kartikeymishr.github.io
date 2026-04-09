@@ -1,5 +1,5 @@
 {
-  "name": "front-end-resume",
+  "name": "kartikeymishr-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "framer-motion": "^7.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^3.0.0",
     "react-icons": "^4.6.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.14.0",
@@ -28,6 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "node scripts/prerender-meta.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

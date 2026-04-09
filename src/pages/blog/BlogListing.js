@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import "./blog.scss";
 
 const BlogListing = () => {
@@ -57,6 +58,15 @@ const BlogListing = () => {
 
   return (
     <div className="app__blog">
+      <Helmet>
+        <title>Blog — Kartikey Mishr</title>
+        <meta name="description" content="Thoughts on engineering, systems design, and building products." />
+        <meta property="og:title" content="Blog — Kartikey Mishr" />
+        <meta property="og:description" content="Thoughts on engineering, systems design, and building products." />
+        <meta property="og:url" content="https://www.kartikeymishr.com/blog" />
+        <meta name="twitter:title" content="Blog — Kartikey Mishr" />
+        <meta name="twitter:description" content="Thoughts on engineering, systems design, and building products." />
+      </Helmet>
       <div className="app__blog-header">
         <h2 className="head-text">
           <span>Blog</span>

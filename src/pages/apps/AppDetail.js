@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { AiFillGithub } from "react-icons/ai";
 import { HiExternalLink } from "react-icons/hi";
 import { projects } from "../../constants/projects";
@@ -28,6 +29,15 @@ const AppDetail = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <Helmet>
+        <title>{project.title} — Kartikey Mishr</title>
+        <meta name="description" content={project.excerpt || project.description} />
+        <meta property="og:title" content={`${project.title} — Kartikey Mishr`} />
+        <meta property="og:description" content={project.excerpt || project.description} />
+        <meta property="og:url" content={`https://www.kartikeymishr.com/apps/${project.slug}`} />
+        <meta name="twitter:title" content={`${project.title} — Kartikey Mishr`} />
+        <meta name="twitter:description" content={project.excerpt || project.description} />
+      </Helmet>
       <Link to="/apps" className="app__app-detail-back">
         &larr; Back to all projects
       </Link>
