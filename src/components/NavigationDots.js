@@ -1,10 +1,10 @@
 import React from "react";
-import { navigation } from "../constants/navigation";
+import { homeSections } from "../constants/navigation";
 
 const NavigationDots = ({ active }) => {
   return (
     <div className="app__navigation">
-      {navigation.map((item, index) => (
+      {homeSections.map((item, index) => (
         <a
           href={`#${item}`}
           key={item + index}
@@ -13,7 +13,9 @@ const NavigationDots = ({ active }) => {
           style={
             active === item ? { backgroundColor: "var(--secondary-color)" } : {}
           }
-        > </a>
+        >
+          {" "}
+        </a>
       ))}
     </div>
   );
