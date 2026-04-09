@@ -35,9 +35,9 @@ const Header = () => {
           </div>
 
           <div className="tag-cmp app__flex">
-            <p className="p-text">A Full Stack Software Engineer</p>
+            <p className="p-text">A Software Engineer at McKinsey & Company</p>
             <p className="p-text">
-              Experienced in Java, Spring Boot, React and Redux
+              experienced in product engineering, systems design & GenAI
             </p>
           </div>
         </div>

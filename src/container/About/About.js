@@ -23,23 +23,34 @@ const About = () => {
             {/*Me, Myself & <span>I</span>*/}
           </h2>
           <p>
-            I'm a <span>Full Stack Developer</span> located in Delhi, India. I
-            have a serious passion for creating beautiful, engaging and
-            accessible web apps.
+            I'm a <span>Software Engineer</span> currently
+            working at <span>McKinsey & Company</span>, based in New Delhi, India. 
           </p>
           <p>
-            I have 4+ years of hands-on experience developing distributed
-            systems and web applications utilizing a wide range of front-end and
-            back-end technologies including <span>React</span>,{" "}
-            <span>Redux</span>, <span>Java 8</span>, and{" "}
-            <span>Spring Boot </span>
-            with <span>SQL</span> as well as <span>NoSQL</span> integration
-            experience. I love constantly learning and experimenting with new
-            technologies in both the front-end and back-end spectrum.
+            Over the past <span>7+ years</span>, I've worked across building{" "}
+            <span>distributed systems</span> and product-focused
+            applications — starting my journey at <span>IBM</span>, and now working
+            closely with clients in the <span>Life Sciences</span> space.
           </p>
           <p>
-            I'm a huge Formula 1 nerd, I thoroughly enjoy touring across the
-            country on my bike, and I take pictures and make music sometimes.
+            More recently, my work has been centered around{" "}
+            <span>GenAI</span> — not just experimenting with LLMs, but
+            designing systems that can reliably use them in real-world products.
+            The interesting challenges, I've found, are rarely about the model
+            itself, but about everything around it: <span>workflows</span>, <span>failure handling</span>,
+            and <span>making inherently probabilistic systems feel dependable</span>.
+          </p>
+          <p>
+            I'm particularly drawn to building products that balance{" "}
+            <span>strong backend systems</span> with{" "}
+            <span>clean, thoughtful interfaces</span> — where what you see is
+            simple, but what's happening underneath is doing meaningful work.
+          </p>
+          <p>
+            Outside of work, I'm a huge <span>Formula 1</span> nerd, I spend
+            time riding across the country on my <span>bike</span>, exploring <span>photography</span>,
+            and getting back into <span>music production</span> — all of which, in different
+            ways, shape how I think about systems, design, and experience.
           </p>
         </div>
         <div className="app__profiles-items">
